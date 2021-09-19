@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('accueil');
 // });
-use App\Http\Controllers\OffresController;
+use App\Http\Controllers\admin\AdminOffresController;
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\ActualiteController;
 use App\Http\Controllers\ContactController;
@@ -32,20 +32,20 @@ Route::get('/actualites', [ActualiteController::class, "index"]);
 
 
 //Route::get('/offres', [OffresController::class, "index"]);
-Route::resource('/offres', OffresController::class);
+Route::resource('/offres', AdminOffresController::class);
 Route::resource('/candidature', CandidatureController::class);
 
 Route::get('/contact', [ContactController::class, "index"]);
 Route::post('/contact', [ContactController::class, "store"]);
 
 
-//routes admin
+Route::prefix('/administrateur')->middleware('auth')->group(function () {
 
-Route::prefix('/admin')->group(function () {
+    //public route (remove auth middleware from it)
+    Route::get('/login', [LoginController::class, "index"])->withoutMiddleware('auth')->name("login");
+    Route::post('/login', [LoginController::class, "login"])->withoutMiddleware('auth')->name("login.submit");
 
-    Route::get('/login', [LoginController::class, "index"])->name("login");
+    Route::resource('/offres',AdminOffresController::class)->names('admin.offres');
 
-    Route::middleware('auth')->group(function () {
-        Route::get('/', [DashboardController::class, "index"])->name("admin.index");
-    });
+    Route::get('/', [DashboardController::class, "index"])->name("admin.dashboard");
 });
