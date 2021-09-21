@@ -22,7 +22,7 @@ class LoginController extends Controller
             'username'=>$request->username,
             'password'=>$request->password
         ])){
-            return redirect(route('admin.dashboard'));
+            return redirect(route('admin.employe.index'));
         }
 
         //lgout from the app

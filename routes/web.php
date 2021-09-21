@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\CandidatureController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OffresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +17,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('accueil');
 // });
-use App\Http\Controllers\admin\AdminOffresController;
 use App\Http\Controllers\AccueilController;
-use App\Http\Controllers\ActualiteController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\admin\AdminEmployeController;
+use App\Http\Controllers\ActualiteController;
 use App\Http\Controllers\ActualitesController;
+use App\Http\Controllers\admin\AdminServiceController;
 use App\Http\Controllers\admin\LoginController;
-use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\AdminChiffreController;
+use App\Http\Controllers\CandidatureController;
+
 
 Route::get('/', [AccueilController::class, "index"]); //laravel 8
 // Route::get('/', "AccueilController@index"); //laravel 7,6,5
@@ -32,7 +35,7 @@ Route::get('/actualites', [ActualiteController::class, "index"]);
 
 
 //Route::get('/offres', [OffresController::class, "index"]);
-Route::resource('/offres', AdminOffresController::class);
+Route::resource('/offres', OffresController::class);
 Route::resource('/candidature', CandidatureController::class);
 
 Route::get('/contact', [ContactController::class, "index"]);
@@ -47,5 +50,13 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
 
     Route::resource('/offres',AdminOffresController::class)->names('admin.offres');
 
-    Route::get('/', [DashboardController::class, "index"])->name("admin.dashboard");
+    Route::get('/', [AdminEmployeController::class, "index"])->name("admin.employe.index");
+    Route::post('/',[AdminEmployeController::class, "store"])->name("admin.employe.store");
+
+    Route::get('/services', [AdminServiceController::class, "index"])->name("admin.service.index");
+    Route::post('/services', [AdminServiceController::class, "store"])->name("admin.service.store");
+
+    Route::get('/chiffres', [AdminChiffreController::class, "index"])->name("admin.chiffre.index");
+
+
 });
