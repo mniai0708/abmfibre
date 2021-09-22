@@ -25,7 +25,6 @@
         </button>
       </div>
       <div class="modal-body">
-
         <!-- Default form group -->
         <form method="POST" action="{{route('admin.employe.store')}}">
             {{csrf_field()}}
@@ -33,11 +32,10 @@
             <div class="form-group">
                 <label for="formGroupExampleInput">Nom</label>
                 <input type="text" class="form-control @if($errors->get('nom')) border border-danger @endif" name="nom" value="{{old('nom')}}"  id="formGroupExampleInput" placeholder="">
-                @if (($errors)->get('nom'))
+                @if ($errors->get('nom'))
                 <ul>
                 @foreach ($errors->get('nom') as $error )
-                    <li style="color:red;  margin-left:-25px">
-                    {{$error}}
+                    <li style="color:red;  margin-left:-25px">{{$error}}
                     </li>
                 @endforeach
                 </ul>

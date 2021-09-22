@@ -46,13 +46,13 @@
                             <a class="nav-link" href="{{route('admin.service.index')}}">Services</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="/">Quelques chiffres</a>
+                            <a class="nav-link" href="{{route('admin.chiffre.index')}}">Quelques chiffres</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="">Actualités</a>
+                            <a class="nav-link" href="{{route('admin.actualites.store')}}">Actualités</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="">Offres d'emplois</a>
+                            <a class="nav-link" href="{{route('admin.offre.index')}}">Offres d'emplois</a>
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="">Candidatures</a>

@@ -15,7 +15,7 @@ class CreateChiffresTable extends Migration
     {
         Schema::create('chiffres', function (Blueprint $table) {
             $table->id();
-            $table->string('titre');
+            $table->text('titre');
             $table->text('contenu');
             $table->string('icon');
             $table->timestamps();

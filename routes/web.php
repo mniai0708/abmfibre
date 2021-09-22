@@ -25,6 +25,8 @@ use App\Http\Controllers\ActualitesController;
 use App\Http\Controllers\admin\AdminServiceController;
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\admin\AdminChiffreController;
+use App\Http\Controllers\admin\AdminActualiteController;
+use App\Http\Controllers\admin\AdminOffreController;
 use App\Http\Controllers\CandidatureController;
 
 
@@ -57,6 +59,12 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::post('/services', [AdminServiceController::class, "store"])->name("admin.service.store");
 
     Route::get('/chiffres', [AdminChiffreController::class, "index"])->name("admin.chiffre.index");
+    Route::post('/chiffres', [AdminChiffreController::class, "store"])->name("admin.chiffre.store");
+
+    Route::get('/actualites', [AdminActualiteController::class, "index"])->name("admin.actualites.index");
+    Route::post('/actualites', [AdminActualiteController::class, "store"])->name("admin.actualites.store");
+
+    Route::get('/offres',[AdminOffreController::class,"index"])->name("admin.offre.index");
 
 
 });

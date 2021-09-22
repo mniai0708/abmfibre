@@ -79,7 +79,7 @@
     </div>
   </div>
 <!--End  Modal -->
-<br><br>
+<br><br><br>
 
 <table class="table">
 
@@ -92,6 +92,7 @@
             <th scope="col">Action</th>
 
         </tr>
+
 
     </thead>
     <tbody>
