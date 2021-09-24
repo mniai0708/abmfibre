@@ -1,11 +1,11 @@
 @extends('admin.layout.app')
 @section('content')
 @if (session()->has('success'))
-<div class="alert alert-success">{{get('success')}}</div>
+<div class="alert alert-success">{{session()->get('success')}}</div>
 @endif
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
-    Créer une offre d'emploi
+    Ajouter une offre d'emploi
 </button>
 
   <!-- Modal -->
@@ -14,106 +14,119 @@
     <div class="modal-dialog modal-fluid " style="width: 1000px" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Création d'une offre d'emploi</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body" >
           <!--Section: Contact v.2-->
-<section class="mb-4">
-
-    <div class="row">
-
-        <!--Grid column-->
-        <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-
-                <!--Grid row-->
+            <section class="mb-4">
                 <div class="row">
-
                     <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="name" name="name" class="form-control">
-                            <label for="name" class="">Your name</label>
-                        </div>
+                    <div class="col-md-12 mb-md-0 mb-5">
+                        <form id="contact-form" name="contact-form" action="{{route("admin.offre.store")}}" method="POST">
+                            {{csrf_field()}}
+
+
+                            <!--Grid row-->
+                            <div class="row">
+
+                                <!--Grid column-->
+                                <div class="col-md-4">
+                                    <!-- Default input -->
+                                    <label for="exampleForm2">Titre</label>
+                                    <input type="text" id="exampleForm2" name="titre" class="form-control">
+                                </div>
+                                <!--Grid column-->
+
+                                <!--Grid column-->
+                                <div class="col-md-4">
+                                    <!-- Default input -->
+                                    <label for="exampleForm2">Contrat</label>
+                                    <input type="text" id="exampleForm2" name="contrat" class="form-control">
+                                </div>
+                                <!--Grid column-->
+                                <div class="col-md-4">
+                                    <!-- Default input -->
+                                    <label for="exampleForm2">Salaire</label>
+                                    <input type="text" id="exampleForm2" name="salaire" class="form-control">
+                                </div>
+                            </div>
+
+                            <!--Grid row-->
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <!--Material textarea-->
+                                        <label for="form75">Description</label>
+                                        <textarea id="form75" name="description" class="md-textarea form-control" rows="3"></textarea>
+                                </div>
+                                <div class="col-md-4">
+                                    <!--Material textarea-->
+                                        <label for="form75">Profil recherché</label>
+                                        <textarea id="form75" name="profil_recherche" class="md-textarea form-control" rows="3"></textarea>
+                                </div>
+                                <div class="col-md-4">
+                                <!--Material textarea-->
+                                    <label for="form75">Informations complémentaires</label>
+                                    <textarea id="form75" name="infocompl" class="md-textarea form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <!--Grid row-->
+                            <div class="row">
+                                <!--Grid column-->
+                                <div class="col-md-4">
+                                    <!-- Default input -->
+                                    <label for="exampleForm2">Mission 1</label>
+                                    <input type="text" id="exampleForm2" name="contenu1" class="form-control">
+                                </div>
+                                <!--Grid column-->
+                                <div class="col-md-4">
+                                    <!-- Default input -->
+                                    <label for="exampleForm2">Mission 2</label>
+                                    <input type="text" id="exampleForm2" name="contenu2" class="form-control">
+                                </div>
+                                <!--Grid column-->
+                                <div class="col-md-4">
+                                    <!-- Default input -->
+                                    <label for="exampleForm2">Mission 3</label>
+                                    <input type="text" id="exampleForm2" name="contenu3" class="form-control">
+                                </div>
+                            </div>
+                            <!--Grid row-->
+                            <div class="row">
+                                <!--Grid column-->
+                                <div class="col-md-4">
+                                    <!-- Default input -->
+                                    <label for="exampleForm2">Mission 4</label>
+                                    <input type="text" id="exampleForm2" name="contenu4" class="form-control">
+                                </div>
+                                <!--Grid column-->
+                                <div class="col-md-4">
+                                    <!-- Default input -->
+                                    <label for="exampleForm2">Mission 5</label>
+                                    <input type="text" id="exampleForm2" name="contenu5" class="form-control">
+                                </div>
+                                <!--Grid column-->
+                                <div class="col-md-4">
+                                    <!-- Default input -->
+                                    <label for="exampleForm2">Mission 6</label>
+                                    <input type="text" id="exampleForm2" name="contenu6" class="form-control">
+                                </div>
+                            </div>
+                            <!--Grid row-->
+
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </form>
                     </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="email" name="email" class="form-control">
-                            <label for="email" class="">Your email</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
                 </div>
-                <!--Grid row-->
 
-                <!--Grid row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="md-form mb-0">
-                            <input type="text" id="subject" name="subject" class="form-control">
-                            <label for="subject" class="">Subject</label>
-                        </div>
-                    </div>
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-12">
-
-                        <div class="md-form">
-                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                            <label for="message">Your message</label>
-                        </div>
-
-                    </div>
-                </div>
-                <!--Grid row-->
-
-            </form>
-
-            <div class="text-center text-md-left">
-                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
-            </div>
-            <div class="status"></div>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-3 text-center">
-            <ul class="list-unstyled mb-0">
-                <li><i class="fas fa-map-marker-alt fa-2x"></i>
-                    <p>San Francisco, CA 94126, USA</p>
-                </li>
-
-                <li><i class="fas fa-phone mt-4 fa-2x"></i>
-                    <p>+ 01 234 567 89</p>
-                </li>
-
-                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-                    <p>contact@mdbootstrap.com</p>
-                </li>
-            </ul>
-        </div>
-        <!--Grid column-->
-
-    </div>
-
-</section>
+            </section>
 <!--Section: Contact v.2-->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

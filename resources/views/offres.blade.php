@@ -15,9 +15,9 @@
         <div class="row">
             @foreach ($offres as $offre)
                 <!-- Card -->
-                <div class="card" style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);margin-right:20px; width:540px">
+                <div class="card" style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);margin-right:20px; width:540px; margin-bottom:20px;">
                     <!-- Content -->
-                    <div class="card-body text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                    <div class="card-body text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4" style="">
                         <div class="w-100">
                             <h5 class="pink-text"><i class="fas fa-chart-pie"></i> Offre d'emploi {{ $offre['id'] }}</h5>
 
@@ -52,12 +52,6 @@
                                          <p>{{ $offre['description'] }}</p>
                                          <h5 style="color: #a6c">Profil recherché</h5>
                                          <p>{{ $offre['profil_recherche'] }}</p>
-                                         <h5 style="color: #a6c">Type d'emploi</h5>
-                                         <p>{{$offre['contrat']}}</p>
-                                         <h5 style="color: #a6c">Salaire</h5>
-                                         <p>{{$offre['salaire']}}</p>
-                                         <h5 style="color: #a6c">Informations complémentaires</h5>
-                                         <p>{{$offre['infocompl']}}</p>
                                          <h5 style="color: #a6c">Missions</h5>
 
                                          <ul>
@@ -67,6 +61,12 @@
                                              </li>
                                          @endforeach
                                         </ul>
+                                         <h5 style="color: #a6c">Type d'emploi</h5>
+                                         <p>{{$offre['contrat']}}</p>
+                                         <h5 style="color: #a6c">Salaire</h5>
+                                         <p>{{$offre['salaire']}}</p>
+                                         <h5 style="color: #a6c">Informations complémentaires</h5>
+                                         <p>{{$offre['infocompl']}}</p>
 
 
                                         </div>
@@ -167,39 +167,48 @@
                                                     @endif
                                                 </div>
                                                 <!--Browse-->
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input @if ($errors->get('cv')) invalid text @endif"
-                                                        id="validatedCustomFile" name="cv" lang="fr">
-                                                    <label class="custom-file-label" for="validatedCustomFile">Votre
-                                                        CV</label>
-                                                    @if ($errors->get('cv'))
-                                                        <ul>
-                                                            @foreach ($errors->get('cv') as $error)
-                                                                <li style="color: red; text-align: left">
-                                                                    {{ $error }}
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
+
+                                                <div class="input-group @if ($errors->has('cv')) border border-danger @endif" >
+                                                    <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroupFileAddon01">CV</span>
+                                                    </div>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input @if ($errors->get('cv')) invalid text @endif"
+                                                            id="validatedCustomFile" name="cv" lang="fr">
+                                                        <label class="custom-file-label" for="validatedCustomFile"></label>
+                                                    </div>
                                                 </div>
-                                                <br><br>
+                                                @if ($errors->get('cv'))
+                                                    <ul>
+                                                        @foreach ($errors->get('cv') as $error)
+                                                            <li style="color: red; text-align: left">
+                                                                {{ $error }}
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                                <br>
                                                 <!--End Browse-->
                                                 <!--Browse-->
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input @if ($errors->get('lettreMotivation')) invalid text @endif"
-                                                        id="validatedCustomFile" name="lettreMotivation" lang="fr" >
-                                                    <label class="custom-file-label" for="validatedCustomFile">Votre lettre
-                                                        de motivation</label>
-                                                    @if ($errors->get('lettreMotivation'))
-                                                        <ul>
-                                                            @foreach ($errors->get('lettreMotivation') as $error)
-                                                                <li style="color: red; text-align: left">
-                                                                    {{ $error }}
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
+                                                <div class="input-group @if ($errors->has('lettreMotivation')) border border-danger @endif">
+                                                    <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="inputGroupFileAddon01">Lettre de motivation</span>
+                                                    </div>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input @if ($errors->get('lettreMotivation')) invalid text @endif"
+                                                            id="validatedCustomFile" name="lettreMotivation" lang="fr" >
+                                                        <label class="custom-file-label" for="validatedCustomFile"></label>
+                                                    </div>
                                                 </div>
+                                                @if ($errors->get('lettreMotivation'))
+                                                    <ul>
+                                                        @foreach ($errors->get('lettreMotivation') as $error)
+                                                            <li style="color: red; text-align: left">
+                                                                {{ $error }}
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
                                                 <!--End Browse-->
                                             </div>
                                             <div class="modal-footer">

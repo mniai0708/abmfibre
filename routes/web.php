@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OffresController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +17,20 @@ use App\Http\Controllers\OffresController;
 // Route::get('/', function () {
 //     return view('accueil');
 // });
+use App\Http\Controllers\OffresController;
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\admin\AdminEmployeController;
 use App\Http\Controllers\ActualiteController;
 use App\Http\Controllers\ActualitesController;
-use App\Http\Controllers\admin\AdminServiceController;
 use App\Http\Controllers\admin\LoginController;
-use App\Http\Controllers\admin\AdminChiffreController;
-use App\Http\Controllers\admin\AdminActualiteController;
-use App\Http\Controllers\admin\AdminOffreController;
 use App\Http\Controllers\CandidatureController;
-
+use App\Http\Controllers\admin\AdminOffreController;
+use App\Http\Controllers\admin\AdminChiffreController;
+use App\Http\Controllers\admin\AdminContactController;
+use App\Http\Controllers\admin\AdminEmployeController;
+use App\Http\Controllers\admin\AdminServiceController;
+use App\Http\Controllers\admin\AdminActualiteController;
+use App\Http\Controllers\admin\AdminCandidatureController;
 
 Route::get('/', [AccueilController::class, "index"]); //laravel 8
 // Route::get('/', "AccueilController@index"); //laravel 7,6,5
@@ -50,7 +52,6 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::get('/login', [LoginController::class, "index"])->withoutMiddleware('auth')->name("login");
     Route::post('/login', [LoginController::class, "login"])->withoutMiddleware('auth')->name("login.submit");
 
-    Route::resource('/offres',AdminOffresController::class)->names('admin.offres');
 
     Route::get('/', [AdminEmployeController::class, "index"])->name("admin.employe.index");
     Route::post('/',[AdminEmployeController::class, "store"])->name("admin.employe.store");
@@ -65,6 +66,13 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::post('/actualites', [AdminActualiteController::class, "store"])->name("admin.actualites.store");
 
     Route::get('/offres',[AdminOffreController::class,"index"])->name("admin.offre.index");
+    Route::post('/offres',[AdminOffreController::class,"store"])->name("admin.offre.store");
+
+    Route::get('/contact',[AdminContactController::class,"index"])->name("admin.contact.index");
+
+    Route::get('/candidature',[AdminCandidatureController::class,"index"])->name("admin.candidature.index");
+
+
 
 
 });

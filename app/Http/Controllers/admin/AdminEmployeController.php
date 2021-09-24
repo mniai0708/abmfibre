@@ -27,6 +27,8 @@ class AdminEmployeController extends Controller
         $employe->telephone = $request->input('telephone');
         $employe->email = $request->input('email');
         $employe->adresse = $request->input('adresse');
+        $employe->image = $request->input('image');
+
 
         $employe->save();
         session()->flash("success","Employé ajouté !");

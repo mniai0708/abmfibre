@@ -5,7 +5,7 @@
 @endif
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModala">
-    Créer une icone
+    Ajouter un chiffre
   </button>
 
   <!-- Modal -->

@@ -49,16 +49,16 @@
                             <a class="nav-link" href="{{route('admin.chiffre.index')}}">Quelques chiffres</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.actualites.store')}}">Actualités</a>
+                            <a class="nav-link" href="{{route('admin.actualites.index')}}">Actualités</a>
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="{{route('admin.offre.index')}}">Offres d'emplois</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="">Candidatures</a>
+                            <a class="nav-link" href="{{route('admin.candidature.index')}}">Candidatures</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Messages</a>
+                        <a class="nav-link" href="{{route('admin.contact.index')}}">Messages</a>
                     </li>
                 </ul>
             </div>

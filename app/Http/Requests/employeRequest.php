@@ -24,11 +24,12 @@ class employeRequest extends FormRequest
     public function rules()
     {
         return [
-            "nom"=> "required | min: 5 |max: 15",
+            "nom"=> "required | min: 3 |max: 15",
             "prenom" => "required | min : 3 | max: 15",
             "telephone" =>"required | numeric | max:10 ",
             "email" =>"required | email",
-            "adresse" =>"required | max:100 "
+            "adresse" =>"required | max:100 ",
+            "image"=> "required "
 
         ];
     }

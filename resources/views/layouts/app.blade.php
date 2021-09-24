@@ -65,14 +65,14 @@
               <div class="row">
                 <div class="col-sm-12 col-md-6">
                   <h6>les partenaires d'ABMFibre</h6>
-                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px;width:50px">
-                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px;width:50px">
-                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px;width:50px">
-                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px;width:50px">
-                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px;width:50px">
-                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px;width:50px">
-                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px;width:50px">
-                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px;width:50px">
+                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px; width:50px; margin-bottom:5px;">
+                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px; width:50px; margin-bottom:5px;">
+                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px; width:50px; margin-bottom:5px;">
+                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px; width:50px; margin-bottom:5px;">
+                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px; width:50px; margin-bottom:5px;">
+                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px; width:50px; margin-bottom:5px;">
+                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px; width:50px; margin-bottom:5px;">
+                  <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px; width:50px; margin-bottom:5px;">
                   </div>
 
 

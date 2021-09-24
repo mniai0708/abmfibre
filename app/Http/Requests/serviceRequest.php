@@ -26,7 +26,7 @@ class serviceRequest extends FormRequest
         return [
             "titre" => "required | min: 10 | max:50",
             "contenu" => "required | min: 10 | max: 300",
-            "image" => "required | image  "
+            "image" => "required  "
         ];
     }
 }

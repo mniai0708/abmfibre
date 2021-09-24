@@ -10,7 +10,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModala">
-    Créer un service
+    Ajouter un service
   </button>
 
 <!-- Modal -->
@@ -31,7 +31,7 @@
 
                 <!-- Default input -->
                 <label for="exampleForm2">Titre</label>
-                <input type="text" id="exampleForm2" name="titre" value="" class="form-control">
+                <input type="text" id="exampleForm2" name="titre" value="{{old('titre')}}" class="form-control">
                 @if ($errors->get('titre'))
                 <ul>
                     @foreach ($errors->get('titre') as $error)
@@ -41,7 +41,7 @@
                 @endif
 
                 <label for="exampleForm2">Contenu</label>
-                <input type="text" id="exampleForm2" name="contenu" value="" class="form-control">
+                <input type="text" id="exampleForm2" name="contenu" value="{{old('contenu')}}" class="form-control">
                 @if (($errors)->get('contenu'))
                 <ul>
                     @foreach ($errors->get('contenu') as $error)
@@ -50,14 +50,14 @@
                 </ul>
                 @endif
                     <br>
-                <div class="input-group">
+                <div class="input-group @if ($errors->has('image')) border border-danger @endif">
                     <div class="input-group-prepend" >
                         <span class="input-group-text" id="inputGroupFileAddon01">Image</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" lang="fr"
+                      <input type="file" name="image" class="custom-file-input"  id="inputGroupFile01" lang="fr"
                         aria-describedby="inputGroupFileAddon01">
-                      <label class="custom-file-label" for="inputGroupFile01">Choisir fichier</label>
+                      <label class="custom-file-label"  for="inputGroupFile01" >Séléctionner une image</label>
                     </div>
                 </div>
                     @if(($errors)->get('image'))

@@ -26,8 +26,9 @@
       </div>
       <div class="modal-body">
         <!-- Default form group -->
-        <form method="POST" action="{{route('admin.employe.store')}}">
+        <form method="POST" action="{{route('admin.employe.store')}}" enctype="mutipart/form-data">
             {{csrf_field()}}
+
             <!-- Default input -->
             <div class="form-group">
                 <label for="formGroupExampleInput">Nom</label>
@@ -97,6 +98,25 @@
                 </ul>
                 @endif
             </div>
+            <div class="input-group @if ($errors->has('image')) border border-danger @endif">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupFileAddon01"  >Image</span>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input " id="inputGroupFile01" name="image"
+                    aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01"></label>
+                </div>
+            </div>
+            @if($errors->has("image"))
+            <ul>
+                @foreach ($errors->get("image") as $error )
+                 <li style="color:red; margin-left:-25px">
+                    {{$error}}
+                </li>
+                @endforeach
+            </ul>
+            @endif
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -128,7 +148,7 @@
       <th scope="row">{{$employe['id']}}</th>
       <td>{{substr($employe['nom'],0,9)}}</td>
       <td>{{$employe['prenom']}}</td>
-      <td>{{substr($employe['telephone'],0,9)}}</td>
+      <td>{{$employe['telephone']}}</td>
       <td>{{substr($employe['email'],0,5)}}</td>
       <td>{{$employe['adresse']}}</td>
       <td>
@@ -158,7 +178,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

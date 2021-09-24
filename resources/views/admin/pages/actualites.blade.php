@@ -9,7 +9,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModala">
-    Créer une actualité
+    Ajouter une actualité
   </button>
 
 
@@ -54,7 +54,7 @@
             </ul>
             @endif
           <!-- Default input -->
-            <div class="input-group">
+            <div class="input-group @if ($errors->has('image')) border border-danger @endif">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroupFileAddon01">Image</span>
                 </div>

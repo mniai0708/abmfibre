@@ -29,7 +29,7 @@ class AccueilController extends Controller
                 "description"=>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda nihil, accusantium odio facilis nesciunt fuga!"
             ],
             [
-                "image"=>asset('images/carousel0.jpeg'),
+                "image"=>asset('images/carousel0.jpg'),
                 "titre"=>"Agence de fibre optique ABMFibre",
                 "description"=>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda nihil, accusantium odio facilis nesciunt fuga!"
             ]

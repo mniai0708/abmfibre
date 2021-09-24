@@ -20,16 +20,29 @@ class AdminOffreController extends Controller
     }
 
     public function store(Request $request){
-        $offres = new Offre();
+        //$offre = new Offre();
+        $offree= new Offre();
+        $mission = new Mission();
 
-        $offres->titre=$request->input('titre');
-        $offres->description=$request->input('description');
-        $offres->profil_recherche=$request->input('profil_recherche');
-        $offres->contrat=$request->input('contrat');
-        $offres->salaire=$request->input('salaire');
-        $offres->infocompl=$request->input('infocompl');
+        $offree->titre=$request->input('titre');
+        $offree->description=$request->input('description');
+        $offree->profil_recherche=$request->input('profil_recherche');
+        $offree->contrat=$request->input('contrat');
+        $offree->salaire=$request->input('salaire');
+        $offree->infocompl=$request->input('infocompl');
+        $offree->save();
 
-        $offres->save();
+        $mission->parent_id = $offree->id;
+        $mission->contenu=$request->input('contenu1');
+        $mission->contenu=$request->input('contenu2');
+        $mission->contenu=$request->input('contenu3');
+        $mission->contenu=$request->input('contenu4');
+        $mission->contenu=$request->input('contenu5');
+        $mission->contenu=$request->input('contenu6');
+
+
+        $mission->save();
+
         session()->flash('success','Offre enregistrée !');
         return redirect(route('admin.offre.store'));
 
