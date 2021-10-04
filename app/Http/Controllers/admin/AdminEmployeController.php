@@ -24,6 +24,7 @@ class AdminEmployeController extends Controller
 
         $employe->nom = $request->input('nom');
         $employe->prenom = $request->input('prenom');
+        $employe->poste = $request->input('poste');
         $employe->telephone = $request->input('telephone');
         $employe->email = $request->input('email');
         $employe->adresse = $request->input('adresse');

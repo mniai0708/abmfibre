@@ -42,7 +42,7 @@
                     @endforeach
                 </ul>
                 @endif
-                <!-- Default input -->
+                <!-- Default input
                 <label for="exampleForm2">Icon</label>
                 <input type="text" id="exampleForm2" name="icon" class="form-control @if (count($errors)) border border-danger @endif"><br>
                 @if (($errors)->get('icon'))
@@ -51,7 +51,7 @@
                         <li style="color: red; margin-left: -25px">{{$error}}</li>
                     @endforeach
                 </ul>
-                @endif
+                @endif-->
 
             </div>
             <div class="modal-footer">
@@ -69,7 +69,7 @@
         <th scope="col">#</th>
         <th scope="col">Titre</th>
         <th scope="col">Contenu</th>
-        <th scope="col">Icons</th>
+        <!--<th scope="col">Icons</th>-->
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -79,41 +79,46 @@
         <th scope="row">{{$chiffre['id']}}</th>
         <td>{{$chiffre['titre']}}</td>
         <td>{{$chiffre['contenu']}}</td>
-        <td>{{$chiffre['icon']}}</td>
+        <!--<td>{{$chiffre['icon']}}</td>-->
         <td><!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#basicExampleModal{{$chiffre['id']}}">
                 <i class="fas fa-eye"></i>
             </button>
         <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#basicExampleModal">
+            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#basicExampleModal">
                 <i class="fas fa-edit"></i>
             </button>
         <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#basicExampleModal">
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExampleModal">
                 <i class="fas fa-trash-alt"></i>
             </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="basicExampleModal{{$chiffre['id']}}" tabindex="-1" role="document" aria-labelledby="myModalLabel"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-notify modal-info" role="document" >
+      <div class="modal-content">
+        <div class="modal-header primary-color">
+          <h5 class="heading" style="font-weight: bold">{{$chiffre['titre']}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         {{$chiffre['contenu']}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
             <!-- Modal -->
             <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">

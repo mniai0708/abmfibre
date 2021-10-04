@@ -26,6 +26,7 @@ class employeRequest extends FormRequest
         return [
             "nom"=> "required | min: 3 |max: 15",
             "prenom" => "required | min : 3 | max: 15",
+            "poste" => "required | min : 3 | max: 30",
             "telephone" =>"required | numeric | max:10 ",
             "email" =>"required | email",
             "adresse" =>"required | max:100 ",

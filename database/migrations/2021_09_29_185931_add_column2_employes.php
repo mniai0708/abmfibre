@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnEmployes extends Migration
+class AddColumn2Employes extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AddColumnEmployes extends Migration
     {
         Schema::table('employes', function (Blueprint $table) {
 
-            $table->string('image');
+            $table->text('poste');
 
 
         });

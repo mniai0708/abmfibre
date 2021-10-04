@@ -58,6 +58,20 @@
             </div>
             <!-- Default input -->
             <div class="form-group">
+                <label for="formGroupExampleInput2">Poste</label>
+                <input type="text" value="{{old('poste')}}" class="form-control @if($errors->get('poste')) border border-danger @endif" name="poste"  id="formGroupExampleInput1" placeholder="">
+                @if (($errors)->get('poste'))
+                <ul>
+                @foreach ($errors->get('poste') as $error )
+                    <li style="color:red;  margin-left:-25px">
+                    {{$error}}
+                    </li>
+                @endforeach
+                </ul>
+                @endif
+            </div>
+            <!-- Default input -->
+            <div class="form-group">
                 <label for="formGroupExampleInput2">Téléphone</label>
                 <input type="text" value="{{old('telephone')}}" class="form-control @if($errors->get('telephone')) border border-danger @endif" name="telephone"  id="formGroupExampleInput2" placeholder="">
                 @if (($errors)->get('telephone'))
@@ -136,6 +150,7 @@
       <th scope="col">#</th>
       <th scope="col">Nom</th>
       <th scope="col">Prenom</th>
+      <th scope="col">Poste</th>
       <th scope="col">Téléphone</th>
       <th scope="col">Email</th>
       <th scope="col">Adresse</th>
@@ -148,50 +163,97 @@
       <th scope="row">{{$employe['id']}}</th>
       <td>{{substr($employe['nom'],0,9)}}</td>
       <td>{{$employe['prenom']}}</td>
+      <td>{{$employe['poste']}}</td>
       <td>{{$employe['telephone']}}</td>
-      <td>{{substr($employe['email'],0,5)}}</td>
+      <td>{{$employe['email']}}</td>
       <td>{{$employe['adresse']}}</td>
       <td>
             <!-- Button 1 Visualiser trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show{{$employe['id']}}">
                 <i class="fas fa-eye"></i>
             </button>
              <!-- Button 2 Modifier trigger modal -->
-             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#basicExampleModal">
+             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit">
                 <i class="fas fa-edit"></i>
             </button>
             <!-- Button 3 Supprimer trigger modal -->
-             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#basicExampleModal">
+             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete">
                 <i class="fas fa-trash-alt"></i>
             </button>
 
 
                 <!-- Modal Visualiser-->
-                <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+                 <!-- Modal -->
+
+            <div class="modal fade " id="show{{$employe['id']}}" tabindex="-1" role="document"
+            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog  modal-notify modal-info" role="document">
+
+              <!--Content-->
+              <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header primary-color">
+                  <p class="heading" style="font-weight: bold">{{$employe['nom']}} {{$employe['prenom']}}</p>
+
+                  <button type="button"  class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                  </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+
+                  <div class="row">
+                    <div class="col-5">
+                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+                        class="img-fluid" alt="">
                     </div>
-                    <div class="modal-body">
+
+                    <div class="col-7">
+                        <table class="table table-borderless">
+                            <h4><strong>{{$employe['poste']}}<strong></h4>
+                                <tr>
+                                    <td>
+                                        <p style="color:#4285f4; font-weight: bold;">Téléphone </p>
+
+                                    </td>
+                                    <td>
+                                        <p>{{$employe['telephone']}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="color:#4285f4; font-weight: bold;">Email</p>
+                                    </td>
+                                    <td>
+                                        <p>{{$employe['email']}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="color:#4285f4; font-weight: bold;">Adresse</p>
+                                    </td>
+                                    <td>
+                                        <p>{{$employe['adresse']}}</p>
+                                    </td>
+                                </tr>
+                        </table>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-primary">Enregistrer</button>
-                    </div>
-                    </div>
+                  </div>
                 </div>
-                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+                  </div>
+              </div>
+              <!--/.Content-->
+            </div>
+            </div>
 
 
 
                 <!-- Modal Modifier -->
-                <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -202,7 +264,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        Modifier
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
@@ -215,7 +277,7 @@
 
 
                 <!-- Modal Supprimer -->
-                <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -226,7 +288,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        Supprimer
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

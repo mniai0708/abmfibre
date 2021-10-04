@@ -22,7 +22,7 @@ class AdminChiffreController extends Controller
 
         $chiffre->titre=$request->input('titre');
         $chiffre->contenu=$request->input('contenu');
-        $chiffre->icon=$request->input('icon');
+        //$chiffre->icon=$request->input('icon');
 
         $chiffre->save();
         session()->flash('success','Icone enregistrée !');

@@ -26,7 +26,7 @@ class chiffreRequest extends FormRequest
         return [
             "titre"=>"required | min:3",
             "contenu"=>"required | min:3",
-            "icon"=>"required | min:3"
+            //"icon"=>"required | min:3"
         ];
     }
 }

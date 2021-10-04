@@ -47,4 +47,8 @@ class AdminOffreController extends Controller
         return redirect(route('admin.offre.store'));
 
     }
+   /* public function show($id){
+        $offre = Offre::find($id);
+        return view()
+    }*/
 }

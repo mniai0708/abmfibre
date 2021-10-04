@@ -103,37 +103,56 @@
             <td><img src="{{$actualite['image']}}" style="width: 100.0px" alt=""></td>
             <td>
                 <!-- Button visualiser trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalRelatedContentv{{$actualite['id']}}">
                     <i class="fas fa-eye"></i>
                 </button>
                 <!-- Button editer trigger modal -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#basicExampleModal">
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#basicExampleModal">
                     <i class="fas fa-edit"></i>
                 </button>
                 <!-- Button supprimer trigger modal -->
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#basicExampleModal">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExampleModal">
                     <i class="fas fa-trash-alt"></i>
                 </button>
-                <!-- Modal -->
-                <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        ...
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div>
+                 <!-- Modal Visualiser-->
+                 <!-- Modal -->
+
+                <div class="modal fade " id="modalRelatedContentv{{$actualite['id']}}" tabindex="-1" role="document"
+                aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog  modal-notify modal-info" role="document">
+
+                <!--Content-->
+                <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header primary-color">
+                    <p class="heading" style="font-weight: bold">{{$actualite['titre']}}</p>
+
+                    <button type="button"  class="close " data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
                     </div>
-                  </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-5">
+                        <img src="{{$actualite['image']}}"
+                            class="img-fluid" alt="">
+                        </div>
+
+                        <div class="col-7">
+                        <p>{{$actualite['description']}}</p>
+                        </div>
+
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+                <!--/.Content-->
+                </div>
                 </div>
 
                 <!-- Modal -->

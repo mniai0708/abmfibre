@@ -138,7 +138,6 @@
         <th scope="col">#</th>
         <th scope="col">Titre</th>
         <th scope="col">Description</th>
-        <th scope="col">Profil recherché</th>
         <th scope="col">Contrat</th>
         <th scope="col">Salaire</th>
         <!--<th scope="col">Info.compl</th>
@@ -152,8 +151,7 @@
       <tr>
         <th scope="row">{{$offre['id']}}</th>
         <td>{{$offre['titre']}}</td>
-        <td>{{substr($offre['description'],0,10)}}</td>
-        <td>{{substr($offre['profil_recherche'],0,20)}}</td>
+        <td>{{substr($offre['description'],0,20)}}</td>
         <td>{{$offre['contrat']}}</td>
         <td>{{$offre['salaire']}}</td>
         <!--
@@ -167,40 +165,65 @@
         </td>-->
         <td>
         <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#basicExampleModalv{{ $offre['id'] }}">
                 <i class="fas fa-eye"></i>
             </button>
         <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#basicExampleModal">
+            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#basicExampleModal">
                 <i class="fas fa-edit"></i>
             </button>
 
         <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#basicExampleModal">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExampleModal">
                     <i class="fas fa-trash-alt"></i>
                 </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
+
+
+
+            <!-- Modal Voir Plus-->
+            <div class="modal fade" id="basicExampleModalv{{ $offre['id'] }}" tabindex="-1"
+            role="document" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog modal-notify modal-info modal-lg" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
+                    <div class="modal-header primary-color">
+                        <h3 class="heading" style="font-weight: bold">{{ $offre['titre'] }}</h3>
+                        <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true" class="white-text">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="color:rgb(97, 92, 92); text-align:justify;">
+                    <h5 style="color: #4285f4; font-weight: bold;">Description du poste</h5>
+                    <p>{{ $offre['description'] }}</p>
+                    <h5 style="color: #4285f4; font-weight: bold;">Profil recherché</h5>
+                    <p>{{ $offre['profil_recherche'] }}</p>
+                    <h5 style="color: #4285f4; font-weight: bold;">Missions</h5>
+
+                    <ul>
+                    @foreach ($offre->missions as $mission )
+                        <li>
+                            {{$mission['contenu']}}
+                        </li>
+                    @endforeach
+                    </ul>
+                    <h5 style="color: #4285f4; font-weight: bold;">Type d'emploi</h5>
+                    <p>{{$offre['contrat']}}</p>
+                    <h5 style="color: #4285f4; font-weight: bold;">Salaire</h5>
+                    <p>{{$offre['salaire']}}</p>
+                    <h5 style="color: #4285f4; font-weight: bold;">Informations complémentaires</h5>
+                    <p>{{$offre['infocompl']}}</p>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"
+                            data-dismiss="modal">Fermer</button>
+                    </div>
                 </div>
-              </div>
             </div>
+            </div>
+            <!--End Modal -->
 
 
             <!-- Modal -->
