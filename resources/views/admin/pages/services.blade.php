@@ -100,7 +100,7 @@
         <tr>
             <th scope="row">{{$service['id']}}</th>
             <td>{{$service['titre']}}</td>
-            <td>{{$service['contenu']}}</td>
+            <td>{{substr($service['contenu'],0,35)}}</td>
             <td><img src="{{$service['image']}}" alt="" style="width:200px"></td>
             <td><!-- Button Visulaiser trigger modal -->
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalRelatedContentv{{$service['id']}}">

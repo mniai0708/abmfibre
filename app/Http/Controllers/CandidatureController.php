@@ -111,4 +111,15 @@ class CandidatureController extends Controller
     {
         //
     }
+
+    public function sendAcceptMail(Candidature $candidature){
+        //update cand status
+
+        // $candidature->accept = true;
+        // $candidature->save();
+
+        //send mail
+
+        return back()->with('success',"Email has been sent to $candidature->nom.");
+    }
 }

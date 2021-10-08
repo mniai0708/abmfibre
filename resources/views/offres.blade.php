@@ -1,6 +1,16 @@
 @extends('layouts.app')
+@section('stylesheets')
+<style>
+@media (max-width: 800px) {
+    .offres{
+        margin-left: 20px;
 
+    }
+}
+</style>
+@endsection
 @section('content')<br>
+
 
     <h1 style="text-align: center">Les Offres d'emploi</h1><br><br>
 
@@ -15,7 +25,7 @@
         <div class="row">
             @foreach ($offres as $offre)
                 <!-- Card -->
-                <div class="card" style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);margin-right:20px; width:540px; margin-bottom:20px;">
+                <div class="card offres" style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);margin-right:20px; width:540px; margin-bottom:20px;">
                     <!-- Content -->
                     <div class="card-body text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4" style="">
                         <div class="w-100">

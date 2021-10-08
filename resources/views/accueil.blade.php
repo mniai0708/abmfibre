@@ -3,6 +3,21 @@
 @section('stylesheets')
     <link rel="stylesheet" href="{{ URL::asset('owl/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('owl/css/owl.theme.default.css') }}">
+    <style>
+        .flex-container {
+  display: flex;
+  flex-direction: row;
+  }
+    @media (max-width: 800px) {
+      .flex-container {
+        flex-direction: column;
+        justify-content: center;
+      }
+      .chiffre{
+          margin-left: 20px;
+      }
+    }
+    </style>
 @endsection
 
 @section('content')
@@ -74,8 +89,8 @@
                         <img src="{{ $carte['image'] }}" class="card-img-top" alt="..." style="height: 196px" />
                         <div class="card-body">
                             <h5 class="">{{ $carte['titre'] }}</h5>
-                        <p class=" card-text">
-                                {{ $carte['contenu'] }}
+                                <p class=" card-text">
+                                    {{ $carte['contenu'] }}
                                 </p>
                         </div>
                         <div class="card-footer">
@@ -99,12 +114,12 @@
     <!-- cards -->
     <h1 class="text-center">ABM Fibre en quelques chiffres</h1>
     <br><br>
-    <div class="d-flex justify-content-around ">
+    <div class="flex-container">
 
         @foreach ($chiffres as $chiffre)
 
 
-            <div class="card" style="width: 18rem; text-align: center; margin-right: 20px;">
+            <div class="card chiffre" style="flex: 100%; text-align: center; margin-right: 20px; margin-bottom:30px">
                 <div class="card-body;" style="padding: 20px">
                     <h5 class="card-title " style="text-align: center; font-weight: bold;">{{ $chiffre['titre'] }}
                     </h5>

@@ -52,9 +52,13 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::get('/login', [LoginController::class, "index"])->withoutMiddleware('auth')->name("login");
     Route::post('/login', [LoginController::class, "login"])->withoutMiddleware('auth')->name("login.submit");
 
+    Route::post('/logout', [LoginController::class, "logout"])->name("logout");
 
-    Route::get('/', [AdminEmployeController::class, "index"])->name("admin.employe.index");
-    Route::post('/',[AdminEmployeController::class, "store"])->name("admin.employe.store");
+    Route::resource('/', AdminEmployeController::class)->names('admin.employe');
+    // Route::get('/', [AdminEmployeController::class, "index"])->name("admin.employe.index");
+    // Route::post('/', [AdminEmployeController::class, "store"])->name("admin.employe.store");
+
+
 
     Route::get('/services', [AdminServiceController::class, "index"])->name("admin.service.index");
     Route::post('/services', [AdminServiceController::class, "store"])->name("admin.service.store");
@@ -65,14 +69,13 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::get('/actualites', [AdminActualiteController::class, "index"])->name("admin.actualites.index");
     Route::post('/actualites', [AdminActualiteController::class, "store"])->name("admin.actualites.store");
 
-    Route::get('/offres',[AdminOffreController::class,"index"])->name("admin.offre.index");
-    Route::post('/offres',[AdminOffreController::class,"store"])->name("admin.offre.store");
+    Route::get('/offres', [AdminOffreController::class, "index"])->name("admin.offre.index");
+    Route::post('/offres', [AdminOffreController::class, "store"])->name("admin.offre.store");
 
-    Route::get('/contact',[AdminContactController::class,"index"])->name("admin.contact.index");
+    Route::get('/contact', [AdminContactController::class, "index"])->name("admin.contact.index");
 
-    Route::get('/candidature',[AdminCandidatureController::class,"index"])->name("admin.candidature.index");
+    Route::get('/candidature', [AdminCandidatureController::class, "index"])->name("admin.candidature.index");
 
-
-
-
+    //route to send mails
+    Route::post('/candidature/{id}', [AdminCandidatureController::class, "sendAcceptMail"])->name("admin.candidature.sendAcceptMail");
 });
