@@ -54,7 +54,9 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
 
     Route::post('/logout', [LoginController::class, "logout"])->name("logout");
 
-    Route::resource('/', AdminEmployeController::class)->names('admin.employe');
+    Route::get('/', [AdminEmployeController::class, "index"])->name('admin.employe.index');
+    Route::post('/', [AdminEmployeController::class, "store"])->name('admin.employe.store');
+    Route::delete('/{id}', [AdminEmployeController::class, "destroy"]);
     // Route::get('/', [AdminEmployeController::class, "index"])->name("admin.employe.index");
     // Route::post('/', [AdminEmployeController::class, "store"])->name("admin.employe.store");
 
@@ -62,20 +64,26 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
 
     Route::get('/services', [AdminServiceController::class, "index"])->name("admin.service.index");
     Route::post('/services', [AdminServiceController::class, "store"])->name("admin.service.store");
+    Route::delete('/services/{id}', [AdminServiceController::class, "destroy"]);
 
     Route::get('/chiffres', [AdminChiffreController::class, "index"])->name("admin.chiffre.index");
     Route::post('/chiffres', [AdminChiffreController::class, "store"])->name("admin.chiffre.store");
+    Route::delete('/chiffres/{id}', [AdminChiffreController::class, "destroy"]);
 
     Route::get('/actualites', [AdminActualiteController::class, "index"])->name("admin.actualites.index");
     Route::post('/actualites', [AdminActualiteController::class, "store"])->name("admin.actualites.store");
+    Route::delete('/actualites/{id}', [AdminActualiteController::class, "destroy"]);
 
     Route::get('/offres', [AdminOffreController::class, "index"])->name("admin.offre.index");
     Route::post('/offres', [AdminOffreController::class, "store"])->name("admin.offre.store");
+    Route::delete('/offres/{id}', [AdminOffreController::class, "destroy"]);
 
     Route::get('/contact', [AdminContactController::class, "index"])->name("admin.contact.index");
+    Route::delete('/contact/{id}', [AdminContactController::class, "destroy"]);
 
     Route::get('/candidature', [AdminCandidatureController::class, "index"])->name("admin.candidature.index");
+    Route::delete('/candidature/{id}', [AdminCandidatureController::class, "destroy"]);
 
     //route to send mails
-    Route::post('/candidature/{id}', [AdminCandidatureController::class, "sendAcceptMail"])->name("admin.candidature.sendAcceptMail");
+    Route::post('/candidature/{candidature}/accept', [AdminCandidatureController::class, "sendAcceptMail"])->name("admin.candidature.sendAcceptMail");
 });

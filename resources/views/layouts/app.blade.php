@@ -18,8 +18,8 @@
 
 
 
-    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/shared.css') }}">
+    <link rel="stylesheet" href="{{URL::asset('css/footer.css') }}">
+    <link rel="stylesheet" href="{{URL::asset('css/shared.css') }}">
 
 
 

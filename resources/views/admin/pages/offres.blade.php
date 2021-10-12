@@ -174,7 +174,7 @@
             </button>
 
         <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExampleModal">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$offre['id']}}">
                     <i class="fas fa-trash-alt"></i>
                 </button>
 
@@ -237,35 +237,43 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
+                  <form action="">
                   <div class="modal-body">
                     ...
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
+                </form>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="delete{{$offre['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <div class="modal-header" style="background-color: red">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: white; font-weight: bold">Suppression de l'offre n°{{$offre['id']}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+                      <span aria-hidden="true" class="wite-text">&times;</span>
                     </button>
                   </div>
+                  <form action="/administrateur/offres/{{$offre['id']}}" method="POST">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
                   <div class="modal-body">
-                    ...
+                      <input type="hidden" name="_method" value="DELETE">
+                      <p>Voulez-vous vraiment supprimé cette offre d'emploi ?</p>
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-danger">Confirmer</button>
                   </div>
+                </form>
                 </div>
               </div>
             </div>

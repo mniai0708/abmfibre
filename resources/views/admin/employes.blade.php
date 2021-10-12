@@ -176,7 +176,7 @@
                 <i class="fas fa-edit"></i>
             </button>
             <!-- Button 3 Supprimer trigger modal -->
-             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete">
+             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$employe['id']}}">
                 <i class="fas fa-trash-alt"></i>
             </button>
 
@@ -264,7 +264,7 @@
                         </div>
                         <div class="modal-body">
                             <!-- Default form group -->
-                            <form method="POST" action="/" enctype="mutipart/form-data">
+                            <form method="POST" action="" enctype="mutipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field("PUT")}}
 
@@ -383,23 +383,29 @@
 
 
                 <!-- Modal Supprimer -->
-                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="delete{{$employe['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <div class="modal-header" style="background-color: red">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color: white; font-weight: bold">Supprimer l'employé n° {{$employe['id']}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" class="white-text">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        Supprimer
+                    <form action="/administrateur/{{$employe['id']}}" method="POST" id="deleteForm">
+                        {{csrf_field()}}
+                        {{method_field('DELETE')}}
+                    <div class="modal-body" >
+                        <input type="hidden" name="_method" value="DELETE">
+                        <p>Voulez-vous vraiment supprimer cet employé ?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-primary">Enregistrer</button>
+                        <button type="submit" class="btn btn-danger">Confirmer</button>
+
                     </div>
+                    </form>
                     </div>
                 </div>
                 </div>

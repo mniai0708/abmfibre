@@ -30,4 +30,10 @@ class AdminChiffreController extends Controller
 
 
     }
+
+    public function destroy($id){
+        $chiffre= Chiffre::find($id);
+        $chiffre->delete();
+        return redirect(route('admin.chiffre.index'));
+    }
 }

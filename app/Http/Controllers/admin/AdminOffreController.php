@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Offre;
+use App\Models\Mission;
+use App\Models\Candidature;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Mission;
-use App\Models\Offre;
 
 class AdminOffreController extends Controller
 {
@@ -46,6 +47,16 @@ class AdminOffreController extends Controller
         session()->flash('success','Offre enregistrée !');
         return redirect(route('admin.offre.store'));
 
+    }
+
+    public function destroy($id){
+        $candidatures= Candidature::where('parent_id', $id);
+        $missions= Mission::where('parent_id', $id);
+        $offre = Offre::find($id);
+        $candidatures->delete();
+        $missions->delete();
+        $offre->delete();
+        return back()->with('error',"Offre 'emploi supprimé !");
     }
    /* public function show($id){
         $offre = Offre::find($id);

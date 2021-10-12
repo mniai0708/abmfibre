@@ -13,4 +13,9 @@ class AdminContactController extends Controller
         return view('admin.pages.contact',
                     ["contacts"=>$contacts]);
     }
+    public function destroy($id){
+        $contact = Contact::find($id);
+        $contact->delete();
+        return back()->with('error','Message supprimé !');
+    }
 }

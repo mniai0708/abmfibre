@@ -69,7 +69,6 @@
         <th scope="col">#</th>
         <th scope="col">Titre</th>
         <th scope="col">Contenu</th>
-        <!--<th scope="col">Icons</th>-->
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -79,7 +78,6 @@
         <th scope="row">{{$chiffre['id']}}</th>
         <td>{{$chiffre['titre']}}</td>
         <td>{{$chiffre['contenu']}}</td>
-        <!--<td>{{$chiffre['icon']}}</td>-->
         <td><!-- Button trigger modal -->
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#basicExampleModal{{$chiffre['id']}}">
                 <i class="fas fa-eye"></i>
@@ -89,7 +87,7 @@
                 <i class="fas fa-edit"></i>
             </button>
         <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExampleModal">
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$chiffre['id']}}">
                 <i class="fas fa-trash-alt"></i>
             </button>
 
@@ -119,7 +117,7 @@
     </div>
   </div>
 
-            <!-- Modal -->
+            <!-- Modal Edit -->
             <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -141,26 +139,33 @@
               </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="delete{{$chiffre['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <div class="modal-header" style="background-color: red">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: white; font-weight:bold;">Supprimer le chiffre n°{{$chiffre['id']}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+                      <span aria-hidden="true" class="white-text">&times;</span>
                     </button>
                   </div>
+                  <form action="/administrateur/chiffres/{{$chiffre['id']}}" method="post" id="deleteForm">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
                   <div class="modal-body">
-                    ...
+                      <input type="hidden" name="_method" value="DELETE">
+                      <p>Voulez-vous vraiment supprimer ce chiffre ?</p>
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-danger">Confirmer</button>
                   </div>
+                </form>
                 </div>
               </div>
-            </div></td>
+            </div>
+        </td>
       </tr>
         @endforeach
     </tbody>

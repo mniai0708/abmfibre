@@ -1,18 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+@media (max-width: 800px) {
+    .actu{
+        width: 150px;
+    }
+    .about{
+        width 200px
+    }
+}
+</style>
 <br>
 <h1 style="text-align: center">Actualités</h1>
 <br><br>
 <div class="container">
     @foreach ($actualites as $actualite )
-    <div class="card mb-3" style="max-width: 1200px; height: 300px; margin-right:100px; margin-left:100px">
-        <div class="row g-0">
+    <div class="card mb-3" style="max-width: 800px; height: 300px;">
+        <div class="row g-0 actu">
             <div class="col-md-4">
                 <img src={{$actualite['image']}} alt="..."
                     class="img-fluid" style="height: 300px; width:400px;" />
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 about">
                 <div class="card-body">
                     <h1 class="card-title">{{$actualite['titre']}}</h1>
 

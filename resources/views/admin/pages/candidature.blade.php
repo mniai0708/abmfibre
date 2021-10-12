@@ -1,5 +1,6 @@
 @extends('admin.layout.app')
 @section('content')
+    @include("shared.messages")
     <table class="table">
         <thead class="black white-text">
             <tr>
@@ -22,13 +23,14 @@
                     <!-- <td>{{ $candidature['prenom'] }}</td></td>-->
                     <td>{{ $candidature['email'] }}</td>
                     <!-- <td>{{ $candidature['telephone'] }}</td>-->
-                    <td>En attente</td>
+                    <td>{{$candidature['etat']}}</td>
 
                     <td>
-                        <form method="POST" action="{{ route('admin.candidature.sendAcceptMail',['id'=>$candidature['id']]) }}">
+                        <form method="POST"
+                            action="{{ route('admin.candidature.sendAcceptMail', ['candidature' => $candidature['id']]) }}">
                             @csrf
-                            <button type="button"
-                                class="btn btn-outline-success btn-rounded waves-effect btn-sm">Accept</button>
+
+                                <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check-circle"></i></button>
                         </form>
                         <!-- Button 1 Visualiser trigger modal -->
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
@@ -36,9 +38,9 @@
                             <i class="fas fa-eye"></i>
                         </button>
 
-                        <!-- Button 3 Supprimer trigger modal -->
+                        <!-- Button 2 Supprimer trigger modal -->
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                            data-target="#basicExampleModal">
+                            data-target="#delete{{$candidature['id']}}">
                             <i class="fas fa-trash-alt"></i>
                         </button>
 
@@ -127,6 +129,34 @@
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Modal Supprimer-->
+                        <div class="modal fade" id="delete{{$candidature['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: red">
+                                <h5 class="modal-title" id="exampleModalLabel" style="color: white; font-weight:bold">Suppression de la candidature n°{{$candidature['id']}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="text-white">&times;</span>
+                                </button>
+                                </div>
+                                <form action="/administrateur/candidature/{{$candidature['id']}}" method="POST">
+                                    {{csrf_field()}}
+                                    {{method_field('DELETE')}}
+                                <div class="modal-body">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <p>Voulez-vous vraiment supprimer cette candidature</p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger">Confirmer</button>
+                                </div>
+                            </form>
+                            </div>
                             </div>
                         </div>
                     </td>

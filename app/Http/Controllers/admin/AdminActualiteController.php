@@ -27,4 +27,10 @@ class AdminActualiteController extends Controller
         return redirect(route('admin.actualites.store'));
 
     }
+    public function destroy($id){
+        $actualite= Actualite::find($id);
+        $actualite->delete();
+        return back()->with('error', 'Actualité supprimé !');
+
+    }
 }
