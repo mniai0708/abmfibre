@@ -29,7 +29,6 @@
                         <form method="POST"
                             action="{{ route('admin.candidature.sendAcceptMail', ['candidature' => $candidature['id']]) }}">
                             @csrf
-
                                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check-circle"></i></button>
                         </form>
                         <!-- Button 1 Visualiser trigger modal -->

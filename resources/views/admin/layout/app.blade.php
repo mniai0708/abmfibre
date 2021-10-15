@@ -69,15 +69,18 @@
                 </ul>
             </div>
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                <button class="btn dropdown-toggle btn-lg" style="background-color: #212121;" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin
+                    <i style="color:white;" class="fas fa-user fa-2x"></i>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <button type="button" class="dropdown-item" href="#">Settings</button>
+                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+
+                    <form action="{{route('admin.password.create')}}" method="get">
+                        <button type="submit" class="dropdown-item">Paramètres</button>
+                    </form>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="dropdown-item">Logout</button>
+                        <button type="submit" class="dropdown-item">Se déconnecter</button>
                     </form>
                 </div>
             </div>

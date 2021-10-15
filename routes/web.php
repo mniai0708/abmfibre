@@ -24,6 +24,8 @@ use App\Http\Controllers\ActualiteController;
 use App\Http\Controllers\ActualitesController;
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\CandidatureController;
+use App\Http\Controllers\admin\PasswordCotroller;
+use App\Http\Controllers\admin\PasswordController;
 use App\Http\Controllers\admin\AdminOffreController;
 use App\Http\Controllers\admin\AdminChiffreController;
 use App\Http\Controllers\admin\AdminContactController;
@@ -51,6 +53,8 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     //public route (remove auth middleware from it)
     Route::get('/login', [LoginController::class, "index"])->withoutMiddleware('auth')->name("login");
     Route::post('/login', [LoginController::class, "login"])->withoutMiddleware('auth')->name("login.submit");
+    Route::get('/password',[PasswordController::class,"create"])->name('admin.password.create');
+    Route::post('/password',[PasswordController::class,"update"])->name('admin.password.update');
 
     Route::post('/logout', [LoginController::class, "logout"])->name("logout");
 
