@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm" style="position: fixed; width: 100%;top: 0;z-index: 999;">
             <a class="navbar-brand" href="">
                 <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..." style="height:50px;width:50px">
-                {{ config('app.name', 'ABMFibre') }}
+
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

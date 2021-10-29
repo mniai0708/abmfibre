@@ -50,12 +50,12 @@ class CandidatureController extends Controller
             //si un cv est bien chargé
             if ($request->hasFile("cv")) {
                 //Alors on le stocke
-                $candidature->cv= $request->cv->store("public/cv");
+                $candidature->cv= $request->cv->store("cv");
             }
             //si une lettre de motivation est bien chargé
             if ($request->hasFile('lettreMotivation')) {
                 //Alors on la stock
-                $candidature->lettreMotivation= $request->lettreMotivation->store('public/lettreMotivation');
+                $candidature->lettreMotivation= $request->lettreMotivation->store('lettreMotivation');
             }
 
             $candidature-> save();

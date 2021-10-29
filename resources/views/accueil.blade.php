@@ -84,9 +84,9 @@
     <div class="row ">
         <div class="owl-carousel owl-theme w-100">
             @foreach ($cartes as $carte)
-                <div class="item p-2" style="300px">
+                <div class="item p-2" style="height:400px">
                     <div class="card h-100">
-                        <img src="{{ $carte['image'] }}" class="card-img-top" alt="..." style="height: 196px" />
+                        <img src="{{asset('storage/'.$carte['image'])}}" class="card-img-top" alt="..." style="height: 196px" />
                         <div class="card-body">
                             <h5 class="">{{ $carte['titre'] }}</h5>
                                 <p class=" card-text">

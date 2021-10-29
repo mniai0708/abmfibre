@@ -19,7 +19,7 @@
     <div class="card mb-3" style="max-width: 800px; height: 300px;">
         <div class="row g-0 actu">
             <div class="col-md-4">
-                <img src={{$actualite['image']}} alt="..."
+                <img src="{{asset('storage/'.$actualite['image'])}}" alt="..."
                     class="img-fluid" style="height: 300px; width:400px;" />
             </div>
             <div class="col-md-8 about">

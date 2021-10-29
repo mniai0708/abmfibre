@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ route('admin.actualites.store') }}" method="POST">
+                    <form action="{{ route('admin.actualites.store') }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <!-- Default input -->
@@ -102,7 +102,7 @@
                     <th scope="row">{{ $actualite['id'] }}</th>
                     <td>{{ $actualite['titre'] }}</td>
                     <td>{{ substr($actualite['description'], 0, 50) }}</td>
-                    <td><img src="{{ $actualite['image'] }}" style="width: 100.0px" alt=""></td>
+                    <td><img src="{{asset('storage/'.$actualite['image'])}}" style="width: 100.0px" alt=""></td>
                     <td>
                         <!-- Button visualiser trigger modal -->
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
@@ -141,7 +141,7 @@
 
                                         <div class="row">
                                             <div class="col-5">
-                                                <img src="{{ $actualite['image'] }}" class="img-fluid" alt="">
+                                                <img src="{{asset('storage/'.$actualite['image'])}}" class="img-fluid" alt="">
                                             </div>
 
                                             <div class="col-7">

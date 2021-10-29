@@ -26,7 +26,7 @@
         </div>
         <div class="modal-body">
 
-            <form method="POST" action="{{route("admin.service.store")}}" >
+            <form method="POST" action="{{route("admin.service.store")}}" enctype="multipart/form-data">
                 {{csrf_field()}}
 
                 <!-- Default input -->
@@ -101,7 +101,7 @@
             <th scope="row">{{$service['id']}}</th>
             <td>{{$service['titre']}}</td>
             <td>{{substr($service['contenu'],0,35)}}</td>
-            <td><img src="{{$service['image']}}" alt="" style="width:200px"></td>
+            <td><img src="{{asset('storage/'.$service['image'])}}" alt="" style="width:200px"></td>
             <td><!-- Button Visulaiser trigger modal -->
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalRelatedContentv{{$service['id']}}">
                     <i class="fas fa-eye"></i>
@@ -138,7 +138,7 @@
 
                   <div class="row">
                     <div class="col-5">
-                      <img src="{{$service['image']}}"
+                      <img src="{{asset('storage/'.$service['image'])}}"
                         class="img-fluid" alt="">
                     </div>
 

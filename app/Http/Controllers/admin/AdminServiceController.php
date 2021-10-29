@@ -22,7 +22,12 @@ class AdminServiceController extends Controller
 
         $services->titre= $request->input('titre');
         $services->contenu= $request->input('contenu');
-        $services->image= $request->input('image');
+
+        if ($request->hasFile('image')) {
+            $services->image=$request->image->store('images');
+        }
+
+
 
         $services->save();
         session()->flash('success','Service enregistré !');

@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateEmployesTable extends Migration
 {
     /**
@@ -20,6 +21,8 @@ class CreateEmployesTable extends Migration
             $table->string('telephone');
             $table->string('email');
             $table->string('adresse');
+            $table->text('poste');
+            $table->string('image')->default("/images/default.jpg");
             $table->timestamps();
         });
     }

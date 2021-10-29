@@ -54,7 +54,7 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::get('/login', [LoginController::class, "index"])->withoutMiddleware('auth')->name("login");
     Route::post('/login', [LoginController::class, "login"])->withoutMiddleware('auth')->name("login.submit");
     Route::get('/password',[PasswordController::class,"create"])->name('admin.password.create');
-    Route::post('/password',[PasswordController::class,"update"])->name('admin.password.update');
+    Route::post('/password',[PasswordController::class,"changePass"]);
 
     Route::post('/logout', [LoginController::class, "logout"])->name("logout");
 
@@ -88,6 +88,10 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::get('/candidature', [AdminCandidatureController::class, "index"])->name("admin.candidature.index");
     Route::delete('/candidature/{id}', [AdminCandidatureController::class, "destroy"]);
 
+    Route::get('/candidature/pdf/{id}/download', [AdminCandidatureController::class, "downloadPdf"])->name("pdf:download");
+    Route::get('/candidature/pdf/{id}/view', [AdminCandidatureController::class, "viewPDF"])->name("pdf:view");
+
     //route to send mails
     Route::post('/candidature/{candidature}/accept', [AdminCandidatureController::class, "sendAcceptMail"])->name("admin.candidature.sendAcceptMail");
+    Route::post('/candidature/{candidature}/refusal', [AdminCandidatureController::class, "sendRefusalMail"])->name("admin.candidature.sendRefusalMail");
 });

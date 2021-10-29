@@ -20,7 +20,9 @@ class AdminActualiteController extends Controller
 
         $actualite->titre=$request->input('titre');
         $actualite->description=$request->input('description');
-        $actualite->image=$request->input('image');
+        if ($request->hasFile('image')) {
+            $actualite->image=$request->image->store('images');
+        }
 
         $actualite->save();
         session()->flash('success','Actualité enregistrée !');

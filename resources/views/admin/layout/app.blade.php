@@ -36,7 +36,7 @@
             <a class="navbar-brand" href="">
                 <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="..."
                     style="height:50px;width:50px">
-                {{ config('app.name', 'ABMFibre') }}
+
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

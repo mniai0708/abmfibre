@@ -6,6 +6,8 @@ use App\Models\Employe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\employeRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
 
 class AdminEmployeController extends Controller
 {
@@ -27,7 +29,15 @@ class AdminEmployeController extends Controller
         $employe->telephone = $request->input('telephone');
         $employe->email = $request->input('email');
         $employe->adresse = $request->input('adresse');
-        $employe->image = $request->input('image');
+
+           // $employe->image = $request->file('image')->store('photos');
+           //$employe->image = Storage::putFile('photos', $request->file('image'));
+
+            if ($request->hasFile('image')) {
+                //Alors on le stocke
+                $employe->image= $request->image->store('images');
+            }
+
 
 
         $employe->save();

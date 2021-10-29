@@ -26,7 +26,7 @@
       </div>
       <div class="modal-body">
         <!-- Default form group -->
-        <form method="POST" action="{{route('admin.employe.store')}}" enctype="mutipart/form-data">
+        <form method="POST" action="{{route('admin.employe.store')}}" enctype="multipart/form-data">
             {{csrf_field()}}
             <!-- Default input -->
             <div class="form-group">
@@ -111,15 +111,9 @@
                 </ul>
                 @endif
             </div>
-            <div class="input-group @if ($errors->has('image')) border border-danger @endif">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroupFileAddon01"  >Image</span>
-                </div>
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input " id="inputGroupFile01" name="image"
-                    aria-describedby="inputGroupFileAddon01">
-                  <label class="custom-file-label" for="inputGroupFile01"></label>
-                </div>
+            <div class="form-group @if ($errors->has('image')) border border-danger @endif">
+                <label for="">Image</label>
+                <input class="form-control" type="file" name="image">
             </div>
             @if($errors->has("image"))
             <ul>
@@ -184,9 +178,9 @@
             <!-- Modal Visualiser-->
                  <!-- Modal -->
 
-            <div class="modal fade " id="show{{$employe['id']}}" tabindex="-1" role="document"
+            <div class="modal fade"  id="show{{$employe['id']}}"  tabindex="-1" role="document"
             aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-            <div class="modal-dialog  modal-notify modal-info" role="document">
+            <div class="modal-dialog  modal-notify modal-info modal-fluid" style="width: 600px" role="document">
 
               <!--Content-->
               <div class="modal-content">
@@ -204,7 +198,7 @@
 
                   <div class="row">
                     <div class="col-5">
-                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg"
+                      <img src="{{asset('storage/'.$employe['image'])}}"
                         class="img-fluid" alt="">
                     </div>
 
