@@ -169,9 +169,9 @@
                 <i class="fas fa-eye"></i>
             </button>
         <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#basicExampleModal">
+            <a type="button" href="{{url('/administrateur/offres/'.$offre['id'].'/edit')}}" class="btn btn-success btn-sm" >
                 <i class="fas fa-edit"></i>
-            </button>
+            </a>
 
         <!-- Button trigger modal -->
                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$offre['id']}}">

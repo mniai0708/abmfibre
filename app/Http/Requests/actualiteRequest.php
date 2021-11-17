@@ -25,8 +25,8 @@ class actualiteRequest extends FormRequest
     {
         return [
             "titre" => "required | min:10",
-            "description" => "required | min:10",
-            "image" => "required "
+            "description" => "required | min:10"
+
         ];
     }
 }

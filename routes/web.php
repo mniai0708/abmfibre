@@ -34,8 +34,8 @@ use App\Http\Controllers\admin\AdminServiceController;
 use App\Http\Controllers\admin\AdminActualiteController;
 use App\Http\Controllers\admin\AdminCandidatureController;
 
-Route::get('/', [AccueilController::class, "index"]); //laravel 8
-// Route::get('/', "AccueilController@index"); //laravel 7,6,5
+Route::get('/', [AccueilController::class, "index"]); // laravel 8
+// Route::get('/', "AccueilController@index") laravel 7,6,5
 
 Route::get('/actualites', [ActualiteController::class, "index"]);
 
@@ -59,6 +59,8 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, "logout"])->name("logout");
 
     Route::get('/', [AdminEmployeController::class, "index"])->name('admin.employe.index');
+    Route::get('/{id}/edit', [AdminEmployeController::class, "edit"]);
+    Route::put('/{id}', [AdminEmployeController::class, "update"]);
     Route::post('/', [AdminEmployeController::class, "store"])->name('admin.employe.store');
     Route::delete('/{id}', [AdminEmployeController::class, "destroy"]);
     // Route::get('/', [AdminEmployeController::class, "index"])->name("admin.employe.index");
@@ -67,6 +69,8 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
 
 
     Route::get('/services', [AdminServiceController::class, "index"])->name("admin.service.index");
+    Route::get('/services/{id}/edit', [AdminServiceController::class, "edit"]);
+    Route::put('/services/{id}', [AdminServiceController::class, "update"]);
     Route::post('/services', [AdminServiceController::class, "store"])->name("admin.service.store");
     Route::delete('/services/{id}', [AdminServiceController::class, "destroy"]);
 
@@ -75,10 +79,14 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::delete('/chiffres/{id}', [AdminChiffreController::class, "destroy"]);
 
     Route::get('/actualites', [AdminActualiteController::class, "index"])->name("admin.actualites.index");
+    Route::get('/actualites/{id}/edit', [AdminActualiteController::class, "edit"]);
+    Route::put('/actualites/{id}', [AdminActualiteController::class, "update"]);
     Route::post('/actualites', [AdminActualiteController::class, "store"])->name("admin.actualites.store");
     Route::delete('/actualites/{id}', [AdminActualiteController::class, "destroy"]);
 
     Route::get('/offres', [AdminOffreController::class, "index"])->name("admin.offre.index");
+    Route::get('/offres/{id}/edit', [AdminOffreController::class, "edit"]);
+    Route::put('/offres/{id}', [AdminOffreController::class, "update"]);
     Route::post('/offres', [AdminOffreController::class, "store"])->name("admin.offre.store");
     Route::delete('/offres/{id}', [AdminOffreController::class, "destroy"]);
 

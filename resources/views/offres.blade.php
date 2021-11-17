@@ -32,7 +32,6 @@
                             <h5 class="pink-text"><i class="fas fa-chart-pie"></i> Offre d'emploi {{ $offre['id'] }}</h5>
 
                             <h3 class="card-title pt-2"><strong>{{ $offre['titre'] }}</strong></h3>
-                            <p>{{ Str::of($offre['contenu'])->limit(100) }}</p>
                             <small class="text-muted">{{ $offre['created_at'] }}</small><br><br>
 
                             <!-- Button trigger modal -->

@@ -1,11 +1,7 @@
 @extends('admin.layout.app')
 @section('content')
 @include("shared.messages")
-    @if (session()->has('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div>
-    @endif
+
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModala">
@@ -110,9 +106,9 @@
                             <i class="fas fa-eye"></i>
                         </button>
                         <!-- Button editer trigger modal -->
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit{{ $actualite['id'] }}">
+                        <a type="button" href="{{url('/administrateur/actualites/'.$actualite['id'].'/edit')}}" class="btn btn-success btn-sm"  >
                             <i class="fas fa-edit"></i>
-                        </button>
+                        </a>
                         <!-- Button supprimer trigger modal -->
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#supprimer{{ $actualite['id'] }}">
                             <i class="fas fa-trash-alt"></i>

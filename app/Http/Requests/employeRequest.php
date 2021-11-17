@@ -29,8 +29,8 @@ class employeRequest extends FormRequest
             "poste" => "required | min : 3 | max: 30",
             "telephone" =>"required | numeric | max:10 ",
             "email" =>"required | email",
-            "adresse" =>"required | max:100 ",
-            "image"=> "required "
+            "adresse" =>"required | max:100 "
+
 
         ];
     }

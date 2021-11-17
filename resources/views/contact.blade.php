@@ -108,22 +108,22 @@
                   <a class="btn-floating blue accent-1">
                     <i class="fas fa-map-marker-alt"></i>
                   </a>
-                  <p>New York, 94126</p>
-                  <p class="mb-md-0">United States</p>
+
+                  <p class="mb-md-0">Anglet</p>
                 </div>
                 <div class="col-md-4">
                   <a class="btn-floating blue accent-1">
                     <i class="fas fa-phone"></i>
                   </a>
-                  <p>+ 01 234 567 89</p>
-                  <p class="mb-md-0">Mon - Fri, 8:00-22:00</p>
+
+                  <p class="mb-md-0">Lun - Ven, 8:00-18:00</p>
                 </div>
                 <div class="col-md-4">
                   <a class="btn-floating blue accent-1">
                     <i class="fas fa-envelope"></i>
                   </a>
-                  <p>info@gmail.com</p>
-                  <p class="mb-0">sale@gmail.com</p>
+
+                  <p class="mb-0">abm.fibre@orange.fr</p>
                 </div>
           </form>
         </div>

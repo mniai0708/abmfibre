@@ -118,7 +118,6 @@
 
         @foreach ($chiffres as $chiffre)
 
-
             <div class="card chiffre" style="flex: 100%; text-align: center; margin-right: 20px; margin-bottom:30px">
                 <div class="card-body;" style="padding: 20px">
                     <h5 class="card-title " style="text-align: center; font-weight: bold;">{{ $chiffre['titre'] }}

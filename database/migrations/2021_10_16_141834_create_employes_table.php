@@ -22,7 +22,7 @@ class CreateEmployesTable extends Migration
             $table->string('email');
             $table->string('adresse');
             $table->text('poste');
-            $table->string('image')->default("/images/default.jpg");
+            $table->string('image')->default("images/default.jpg");
             $table->timestamps();
         });
     }

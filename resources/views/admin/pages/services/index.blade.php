@@ -107,9 +107,9 @@
                     <i class="fas fa-eye"></i>
                 </button>
                 <!-- Button Modifier trigger modal -->
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#basicExampleModal">
+                <a href="{{url('/administrateur/services/'.$service['id'].'/edit')}}" type="button" class="btn btn-success btn-sm" >
                     <i class="fas fa-edit"></i>
-                </button>
+                </a>
                 <!-- Button Supprimer trigger modal -->
                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$service['id']}}" >
                     <i class="fas fa-trash-alt"></i>

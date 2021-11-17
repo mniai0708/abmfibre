@@ -12,10 +12,10 @@ class AdminOffreController extends Controller
 {
     public function index(){
 
-        $offres= Offre::all();
+        $offres= Offre::all()->sortByDesc('created_at');
         $missions=Mission::all();
 
-        return view('admin.pages.offres',
+        return view('admin.pages.offres.index',
                      ["offres" => $offres,
                       "missions" => $missions]);
     }
@@ -23,7 +23,36 @@ class AdminOffreController extends Controller
     public function store(Request $request){
         //$offre = new Offre();
         $offree= new Offre();
-        $mission = new Mission();
+        $offree->titre=$request->input('titre');
+        $offree->description=$request->input('description');
+        $offree->profil_recherche=$request->input('profil_recherche');
+        $offree->contrat=$request->input('contrat');
+        $offree->salaire=$request->input('salaire');
+        $offree->infocompl=$request->input('infocompl');
+        $offree->save();
+
+
+        for($i=1;$i<=6;$i++){
+            $content = $request->input('contenu'.$i);
+            $mission = new Mission();
+            $mission->parent_id = $offree->id;
+            $mission->contenu=  $content ? $content:" ";
+            $mission->save();
+        }
+
+        session()->flash('success','Offre enregistrée !');
+        return redirect(route('admin.offre.store'));
+
+    }
+
+    public function edit($id){
+        $offre= Offre::where("id",$id)->with('missions')->first();
+        $mission = $offre->missions;
+        return view('admin.pages.offres.edit',["offre"=>$offre]);
+    }
+    public function update(Request $request,$id){
+        $offree= Offre::where("id",$id)->with('missions')->first();
+        $mission = Mission::find($id);
 
         $offree->titre=$request->input('titre');
         $offree->description=$request->input('description');
@@ -33,19 +62,17 @@ class AdminOffreController extends Controller
         $offree->infocompl=$request->input('infocompl');
         $offree->save();
 
-        $mission->parent_id = $offree->id;
-        $mission->contenu=$request->input('contenu1');
-        $mission->contenu=$request->input('contenu2');
-        $mission->contenu=$request->input('contenu3');
-        $mission->contenu=$request->input('contenu4');
-        $mission->contenu=$request->input('contenu5');
-        $mission->contenu=$request->input('contenu6');
+        $offree->missions()->delete();
+        for($i=1;$i<=6;$i++){
+            $content = $request->input('contenu'.$i);
+            $mission = new Mission();
+            $mission->parent_id = $offree->id;
+            $mission->contenu=  $content ? $content:" ";
+            $mission->save();
+        }
 
-
-        $mission->save();
-
-        session()->flash('success','Offre enregistrée !');
-        return redirect(route('admin.offre.store'));
+        session()->flash('success','Offre modifiée !');
+        return redirect(route('admin.offre.index'));
 
     }
 

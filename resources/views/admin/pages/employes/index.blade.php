@@ -1,12 +1,8 @@
 @extends('admin.layout.app')
 @section('content')
+@include('shared.messages')
 
 
-@if (session()->has("success"))
-    <div class="alert alert-success">
-        {{session()->get("success")}}
-    </div>
-@endif
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModala">
@@ -165,16 +161,6 @@
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show{{$employe['id']}}">
                 <i class="fas fa-eye"></i>
             </button>
-             <!-- Button 2 Modifier trigger modal -->
-             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit">
-                <i class="fas fa-edit"></i>
-            </button>
-            <!-- Button 3 Supprimer trigger modal -->
-             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$employe['id']}}">
-                <i class="fas fa-trash-alt"></i>
-            </button>
-
-
             <!-- Modal Visualiser-->
                  <!-- Modal -->
 
@@ -242,138 +228,16 @@
               <!--/.Content-->
             </div>
             </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header" style="background-color: #00c851; color: white;">
-                            <h5 class="modal-title" id="exampleModalLabel">Modifier employé n° {{$employe['id']}}</h5>
-                            <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="white-text">&times;</span>
+            <!-- Button 2 Modifier trigger modal -->
+             <a type="button" href="{{url('/administrateur/'.$employe['id'].'/edit')}}" class="btn btn-success btn-sm"  >
+                <i class="fas fa-edit"></i>
+             </a>
+            <!-- Button 3 Supprimer trigger modal -->
+             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$employe['id']}}">
+                <i class="fas fa-trash-alt"></i>
+            </button>
 
 
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Default form group -->
-                            <form method="POST" action="" enctype="mutipart/form-data">
-                                {{csrf_field()}}
-                                {{method_field("PUT")}}
-
-                                <!-- Default input -->
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput">Nom</label>
-                                    <input type="text" class="form-control @if($errors->get('nom')) border border-danger @endif" name="nom" value="{{old('nom')}}"  id="formGroupExampleInput" placeholder="">
-                                    @if ($errors->get('nom'))
-                                        <ul>
-                                            @foreach ($errors->get('nom') as $error )
-                                                <li style="color:red;  margin-left:-25px">{{$error}}
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </div>
-                                <!-- Default input -->
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Prenom</label>
-                                    <input type="text" value="{{old('prenom')}}" class="form-control @if($errors->get('prenom')) border border-danger @endif" name="prenom"  id="formGroupExampleInput1" placeholder="">
-                                    @if (($errors)->get('prenom'))
-                                        <ul>
-                                            @foreach ($errors->get('prenom') as $error )
-                                                <li style="color:red;  margin-left:-25px">
-                                                    {{$error}}
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </div>
-                                <!-- Default input -->
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Poste</label>
-                                    <input type="text" value="{{old('poste')}}" class="form-control @if($errors->get('poste')) border border-danger @endif" name="poste"  id="formGroupExampleInput1" placeholder="">
-                                    @if (($errors)->get('poste'))
-                                        <ul>
-                                            @foreach ($errors->get('poste') as $error )
-                                                <li style="color:red;  margin-left:-25px">
-                                                    {{$error}}
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </div>
-                                <!-- Default input -->
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Téléphone</label>
-                                    <input type="text" value="{{old('telephone')}}" class="form-control @if($errors->get('telephone')) border border-danger @endif" name="telephone"  id="formGroupExampleInput2" placeholder="">
-                                    @if (($errors)->get('telephone'))
-                                        <ul>
-                                            @foreach ($errors->get('telephone') as $error )
-                                                <li style="color:red;  margin-left:-25px">
-                                                    {{$error}}
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </div>
-                                <!-- Default input -->
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Adresse email</label>
-                                    <input type="text" value="{{old('email')}}" class="form-control @if($errors->get('email')) border border-danger @endif" name="email"  id="formGroupExampleInput3" placeholder="">
-                                    @if (($errors)->get('email'))
-                                        <ul>
-                                            @foreach ($errors->get('email') as $error )
-                                                <li style="color:red; margin-left:-25px">
-                                                    {{$error}}
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </div>
-                                <!-- Default input -->
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Adresse</label>
-                                    <input type="text" class="form-control @if($errors->get('adresse')) border border-danger @endif" name="adresse" value="{{old('adresse')}}" id="formGroupExampleInput4" placeholder="">
-                                    @if (($errors)->get('adresse'))
-                                        <ul>
-                                            @foreach ($errors->get('adresse') as $error )
-                                                <li style="color:red;  margin-left:-25px">
-                                                    {{$error}}
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </div>
-                                <div class="input-group @if ($errors->has('image')) border border-danger @endif">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Image</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input " id="inputGroupFile01" name="image"
-                                        aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01"></label>
-                                    </div>
-                                </div>
-                                @if($errors->has("image"))
-                                    <ul>
-                                        @foreach ($errors->get("image") as $error )
-                                            <li style="color:red; margin-left:-25px">
-                                                {{$error}}
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                    <button type="submit" class="btn btn-success">Enregistrer</button>
-                                </div>
-                            </form>
-                            <!-- Default form group -->
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
                 <!-- Modal Supprimer -->
@@ -403,13 +267,11 @@
                     </div>
                 </div>
                 </div>
-    </td>
+            </td>
       @endforeach
     </tr>
   </tbody>
 </table>
-
-
 @endsection
 
 
