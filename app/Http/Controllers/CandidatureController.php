@@ -47,14 +47,14 @@ class CandidatureController extends Controller
             $candidature->email = $request->input('email');
             $candidature->telephone = $request->input('telephone');
             $candidature->parent_id = $offre->id;
-            //si un cv est bien chargé
+
             if ($request->hasFile("cv")) {
-                //Alors on le stocke
+
                 $candidature->cv= $request->cv->store("cv");
             }
-            //si une lettre de motivation est bien chargé
+
             if ($request->hasFile('lettreMotivation')) {
-                //Alors on la stock
+
                 $candidature->lettreMotivation= $request->lettreMotivation->store('lettreMotivation');
             }
 
@@ -120,6 +120,6 @@ class CandidatureController extends Controller
 
         //send mail
 
-        return back()->with('success',"Email has been sent to $candidature->nom.");
+        return back()->with('success',"Un email est envoyé à $candidature->nom.");
     }
 }

@@ -51,9 +51,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.service.index') }}">Services</a>
                     </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.chiffre.index') }}">Quelques chiffres</a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.actualites.index') }}">Actualités</a>
                     </li>

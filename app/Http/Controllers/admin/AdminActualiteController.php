@@ -43,7 +43,6 @@ class AdminActualiteController extends Controller
         if ($request->hasFile('image')) {
             $actualite->image=$request->image->store('images');
         }
-
         $actualite->save();
         session()->flash('success','Actualité modifiée !');
         return redirect(route('admin.actualites.index'));

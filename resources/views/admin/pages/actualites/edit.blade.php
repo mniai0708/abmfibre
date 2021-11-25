@@ -24,8 +24,8 @@
     </div>
     <!-- Default input -->
     <label for="exampleForm2">Description</label>
-    <input type="text" name="description" id="exampleForm2" value="{{$actualite['description']}}"
-        class="form-control @if ($errors->get('description')) border border-danger @endif"><br>
+    <textarea type="text" name="description" id="exampleForm2"
+        class="form-control @if ($errors->get('description')) border border-danger @endif">{{$actualite['description']}}</textarea><br>
     @if ($errors->get('description'))
         <ul>
             @foreach ($errors->get('description') as $error)

@@ -18,7 +18,7 @@
             @foreach ($candidatures as $candidature)
                 <tr>
                     <th scope="row">{{ $candidature['id'] }}</th>
-                    <th scope="row">{{ $candidature['offres']['titre'] }}</th>
+                    <th scope="row">{{substr( $candidature['offres']['titre'],0,35) }}</th>
                     <td>{{ $candidature['nom'] }}</td>
                     <!-- <td>{{ $candidature['prenom'] }}</td></td>-->
                     <td>{{ $candidature['email'] }}</td>

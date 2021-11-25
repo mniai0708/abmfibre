@@ -39,7 +39,7 @@
         <form action="{{route('login.submit')}}" method="post" class="form">
             @csrf
             <div class="form__field">
-                <input type="text" autocomplete="off" name="username" placeholder="Username" value="{{old('username')}}"/>
+                <input type="text" autocomplete="off" name="username" placeholder="Identifiant" value="{{old('username')}}"/>
             </div>
 
             <div class="form__field">

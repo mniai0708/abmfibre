@@ -16,7 +16,7 @@
 <br><br>
 <div class="container">
     @foreach ($actualites as $actualite )
-    <div class="card mb-3" style="max-width: 800px; height: 300px;">
+    <div class="card mb-3" style="max-width: 800px; height: 300px; margin-left:200px">
         <div class="row g-0 actu">
             <div class="col-md-4">
                 <img src="{{asset('storage/'.$actualite['image'])}}" alt="..."
@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <h1 class="card-title">{{$actualite['titre']}}</h1>
 
-                    <p class="card-text">{{Str::of($actualite['description'])->limit(550)}}</p>
+                    <p class="card-text">{{Str::of($actualite['description'])->limit(200)}}</p>
                     <small class="text-muted">{{$actualite['updated_at']}}</small>
 
                     <br><br>
@@ -40,7 +40,7 @@
                             <div class="modal fade" id="basicExampleModal{{$actualite['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true" >
                                 <div class="modal-dialog" role="document">
-                                <div class="modal-content" style="width: 700px; height:500px;">
+                                <div class="modal-content" style="width: 600px; height:400px;">
                                     <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">{{$actualite['titre']}}</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

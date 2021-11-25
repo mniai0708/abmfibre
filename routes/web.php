@@ -55,7 +55,6 @@ Route::prefix('/administrateur')->middleware('auth')->group(function () {
     Route::post('/login', [LoginController::class, "login"])->withoutMiddleware('auth')->name("login.submit");
     Route::get('/password',[PasswordController::class,"create"])->name('admin.password.create');
     Route::post('/password',[PasswordController::class,"changePass"]);
-
     Route::post('/logout', [LoginController::class, "logout"])->name("logout");
 
     Route::get('/', [AdminEmployeController::class, "index"])->name('admin.employe.index');

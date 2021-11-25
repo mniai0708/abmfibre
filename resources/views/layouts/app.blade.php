@@ -18,8 +18,11 @@
 
 
 
+
+
     <link rel="stylesheet" href="{{URL::asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{URL::asset('css/shared.css') }}">
+
 
 
 
@@ -57,8 +60,13 @@
                 </ul>
             </div>
           </nav>
+
 <br><br><br>
+
+
           @yield('content')
+
+
 <br><br><br>
           <footer class="site-footer">
             <div class="container">

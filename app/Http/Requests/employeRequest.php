@@ -30,8 +30,6 @@ class employeRequest extends FormRequest
             "telephone" =>"required | numeric | max:10 ",
             "email" =>"required | email",
             "adresse" =>"required | max:100 "
-
-
         ];
     }
 }

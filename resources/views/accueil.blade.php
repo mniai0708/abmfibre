@@ -53,34 +53,32 @@
     <br><br><br>
 
     <div class="container">
-        @foreach ($descriptions as $description)
-            <div class="card mb-3" style="max-width: 1200px; height: 400px;">
+
+            <div class="card mb-3" style="max-width: 1000px; height: 200px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src={{ $description['image'] }} alt="..." class="img-fluid" style="height: 400px;" />
+                        <img src={{asset('images/carousel0.jpg')}} alt="..." class="img-fluid center" style="height: 200px;" />
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
 
-                            <h1 class="card-title">{{ $description['titre'] }}</h1>
-                            <p class="card-text">{{ $description['contenu'] }}</p>
-
-                            <br><br>
-
-                            <p class="card-text">
-                                <small class="text-muted">Ajouté le {{ $description['created_at'] }}</small>
-                            </p>
-
+                            <h1 class="card-title">Qui sommes-nous ?</h1>
+                            <p class="card-text">Spécialisée dans le secteur de la fibre optique, la société ABM FIBRE
+                                 a été créée en 2016. Elle est basée à Anglet et intervient dans les Pyrénées-Atlantiques
+                                  et les Landes, en collaboration avec Orange. Raccordement de câbles, mise en service
+                                   d'équipements ou encore maintenance, font de la société ABM FIBRE un acteur incontournable
+                                    sur le marché</p>
                         </div>
                     </div>
                 </div>
-        @endforeach
+             </div>
     </div>
     <!----------------------------------------------------------------------------------->
     <br><br><br>
 
     <h1 style="text-align: center;"> Les services d'ABMFibre</h1>
     <br>
+<div class='container'>
     <div class="row ">
         <div class="owl-carousel owl-theme w-100">
             @foreach ($cartes as $carte)
@@ -93,14 +91,15 @@
                                     {{ $carte['contenu'] }}
                                 </p>
                         </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Ajouté le {{ $carte['created_at'] }}</small>
+                        <div class="card-footer" style="background-color: black">
+                            <small class="text-muted" style="color: white">Ajouté le {{ $carte['created_at'] }}</small>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-    </div><br>
+    </div>
+</div><br>
     <div class="d-flex justify-content-center">
         <div>
             <button id="btn-previous-element" class="btn btn-ouline-secondary"><i class="fas fa-angle-left fa-2x"></i></button>
@@ -114,7 +113,9 @@
     <!-- cards -->
     <h1 class="text-center">ABM Fibre en quelques chiffres</h1>
     <br><br>
-    <div class="flex-container">
+    <div class="container">
+
+        <div class="d-flex justify-content-center">
 
         @foreach ($chiffres as $chiffre)
 
@@ -129,11 +130,11 @@
 
                 </div>
             </div>
-
         @endforeach
+        </div>
     </div>
-    </div>
-    <br><br><br>
+
+    <br>
 
 @endsection
 

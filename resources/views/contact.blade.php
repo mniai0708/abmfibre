@@ -109,14 +109,14 @@
                     <i class="fas fa-map-marker-alt"></i>
                   </a>
 
-                  <p class="mb-md-0">Anglet</p>
+                  <p class="mb-md-0"> 1 Pl. de la chappelle <br>Anglet</p>
                 </div>
                 <div class="col-md-4">
                   <a class="btn-floating blue accent-1">
                     <i class="fas fa-phone"></i>
                   </a>
 
-                  <p class="mb-md-0">Lun - Ven, 8:00-18:00</p>
+                  <p class="mb-md-0">0101010101</p>
                 </div>
                 <div class="col-md-4">
                   <a class="btn-floating blue accent-1">

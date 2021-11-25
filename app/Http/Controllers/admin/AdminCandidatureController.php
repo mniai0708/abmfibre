@@ -44,7 +44,7 @@ class AdminCandidatureController extends Controller
         $candidature->etat = "accepté";
         $candidature->save();
 
-        return back()->with('success', 'Candidature acceptée, mail envoyé');
+        return back()->with('success', 'Candidature acceptée, Un email est envoyé à '.$candidature->nom);
     }
     public function sendRefusalMail(Candidature $candidature)
     {
